@@ -61,8 +61,15 @@
       <!-- Герой  -->
       <section class="hero">
         <h1 class="hero__title">Эффективные решения для вашего бизнеса</h1>
-        <button type="button" class="hero__btn">Заказать услугу</button>
+        <button data-modal-open type="button" class="hero__btn">Заказать услугу</button>
       </section>
+
+      <!-- модальное окно -->
+      <div class="backdrop is-hidden" data-modal>
+        <div class="modal">
+          <button data-modal-close>Закрыть</button>
+        </div>
+      </div>
 
       <!--  Преимущества компании  -->
 
@@ -119,26 +126,36 @@
       </section>
 
       <!-- Чем занимается компания -->
-      <section class="section">
+      <section class="services-section section">
         <div class="container">
           <h2 class="services-section__title">Чем мы занимаемся</h2>
           <ul class="services-list list">
             <li class="services-list__item">
-              <img src="./images/box1.jpg" alt="руки печатают на клавиатуре" width="370" />
+              <img
+                class="services-list__img"
+                src="./images/box1.jpg"
+                alt="руки печатают на клавиатуре"
+                width="370"
+              />
+              <div class="services-list__box">Десктопные приложения</div>
             </li>
             <li class="services-list__item">
               <img
+                class="services-list__img"
                 src="./images/box2.jpg"
                 alt="руки держат телефон перед экраном компьютера"
                 width="370"
               />
+              <div class="services-list__box">Мобильные приложения</div>
             </li>
             <li class="services-list__item">
               <img
+                class="services-list__img"
                 src="./images/box3.jpg"
                 alt="руки держат планшет перед клавиатурой компьютера"
                 width="370"
               />
+              <div class="services-list__box">Дизайнерские решения</div>
             </li>
           </ul>
         </div>
@@ -417,5 +434,7 @@
         </div>
       </div>
     </footer>
+
+    <script src="./js/modal.js"></script>
   </body>
 </html>
