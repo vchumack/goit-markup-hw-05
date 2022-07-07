@@ -28,6 +28,9 @@
    --icon-bg-color: #44454E;
    --accent-hover-color: rgba(33, 150, 243, 0.9);
    --overlay-color: rgba(0, 0, 0, 0.2);
+   --modal-color: rgba(0, 0, 0, 0.1);
+
+   --timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 
 }
 
@@ -125,6 +128,7 @@ body {
    margin-right: 50px;
 }
 
+
 .site-nav__link {
    display: block;
    padding-top: 32px;
@@ -137,6 +141,8 @@ body {
    letter-spacing: 0.02em;
 
    color: var(--secondary-text-color);
+
+   transition: color 250ms var(--timing-function);
 }
 
 .site-nav__link:hover,
@@ -145,7 +151,24 @@ body {
 }
 
 .site-nav__link--active {
+   position: relative;
    color: var(--accent-color);
+}
+
+.site-nav__link--active::after {
+   content: '';
+
+   position: absolute;
+   left: 0;
+   bottom: -1px;
+
+   display: inline-block;
+   width: 100%;
+   height: 4px;
+
+   border-radius: 2px;
+
+   background-color: var(--accent-color);
 }
 
 /*---------------- Стилизация контактов в хедере ----------------*/
@@ -162,10 +185,6 @@ body {
    margin-right: 50px;
 }
 
-/* .contacts-list__item {
-   outline: 1px solid #ff3388; 
-} */
-
 .contacts-list__link {
    text-decoration: none;
    font-weight: 500;
@@ -175,6 +194,11 @@ body {
 
    color: var(--main-text-color);
    fill: var(--main-text-color);
+
+   transition: color 250ms var(--timing-function),
+      fill 250ms var(--timing-function);
+
+
 }
 
 .contacts-list__link:hover,
@@ -229,22 +253,24 @@ body {
 }
 
 .hero__btn {
-   border: 1px solid transparent;
-   border-radius: 4px;
+
    padding: 10px 32px;
    min-width: 200px;
    text-align: center;
-
-   cursor: pointer;
 
    font-family: inherit;
    font-weight: 700;
    font-size: 16px;
    line-height: 1.88;
    letter-spacing: 0.06em;
+   border: 1px solid transparent;
+   border-radius: 4px;
 
    color: var(--white-text-color);
    background-color: var(--accent-color);
+
+   cursor: pointer;
+
 }
 
 
@@ -257,9 +283,12 @@ body {
 
    background-color: var(--overlay-color);
 
+   transition: opacity 250ms var(--timing-function);
+
 }
 
 .is-hidden {
+   visibility: hidden;
    opacity: 0;
    pointer-events: none;
 }
@@ -277,6 +306,27 @@ body {
    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 2px 1px rgba(0, 0, 0, 0.2);
    border-radius: 4px;
 }
+
+.btn-modal {
+   position: absolute;
+   top: 0;
+   right: 0;
+   width: 30px;
+   height: 30px;
+
+   margin-right: 8px;
+   margin-top: 8px;
+
+   display: flex;
+   justify-content: center;
+   align-items: center;
+
+   border-radius: 50%;
+   border: 1px solid var(--modal-color);
+   background-color: var(--white-background-color);
+   color: var(--modal-color);
+}
+
 
 /*---------------- Стилизация раздела преимуществ ----------------*/
 .advantages-section {
@@ -482,6 +532,9 @@ body {
    margin-right: auto;
 
    fill: var(--icon-color);
+   transition: background-color 250ms var(--timing-function),
+      fill 250ms var(--timing-function);
+
 }
 
 .social-icon__link:hover,
@@ -526,6 +579,10 @@ body {
    border-radius: 4px;
 
    fill: var(--icon-color);
+   transition: border 250ms var(--timing-function),
+      fill 250ms var(--timing-function);
+
+
 
 }
 
@@ -574,6 +631,8 @@ body {
    text-decoration: none;
 
    color: var(--white-text-color);
+
+   transition: color 250ms var(--timing-function);
 }
 
 .address-list__link:hover,
@@ -586,6 +645,7 @@ body {
    text-decoration: none;
 
    color: var(--secondary-link-color);
+   transition: color 250ms var(--timing-function);
 }
 
 .address-list__contacts:hover,
@@ -633,12 +693,14 @@ body {
    height: 44px;
    border-radius: 50%;
 
-
    margin-left: auto;
    margin-right: auto;
 
    fill: var(--white-text-color);
    background-color: var(--icon-bg-color);
+
+   transition: fill 250ms var(--timing-function),
+      background-color 250ms var(--timing-function);
 
 }
 
@@ -697,6 +759,12 @@ body {
    border-radius: 4px;
    border: 0;
 
+   transition: background-color 250ms var(--timing-function),
+      color 250ms var(--timing-function),
+      box-shadow 250ms var(--timing-function),
+      border-radius 250ms var(--timing-function);
+
+
    /* outline: 1px solid blueviolet; */
 }
 
@@ -719,8 +787,10 @@ body {
    margin-right: 30px;
    margin-bottom: 30px;
 
+
    /* outline: rgb(83, 246, 83) solid 2px; */
 }
+
 
 .projects-list__item:nth-child(3n) {
    margin-right: 0;
@@ -733,6 +803,7 @@ body {
 .projects-list__link {
    display: inline-block;
    text-decoration: none;
+
 }
 
 .projects-list__link:hover,
@@ -740,13 +811,19 @@ body {
    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06), 1px 4px 6px rgba(0, 0, 0, 0.16);
 }
 
+.projects-list__link:hover .projects-list__tip {
+   transform: translateY(100%);
+}
+
 .projects-list__box {
    position: relative;
+   overflow: hidden;
 
 }
 
 .projects-list__img {
    display: block;
+
 }
 
 .projects-list__tip {
@@ -755,8 +832,6 @@ body {
    height: 100%;
    top: -100%;
    left: 0;
-   transform: translate(0, 100%);
-
 
    margin-top: 0;
    margin-bottom: 0;
@@ -772,16 +847,12 @@ body {
    background-color: var(--accent-hover-color);
    color: var(--white-text-color);
 
-   opacity: 0;
-
-}
-
-.projects-list__tip:hover {
-
    opacity: 1;
 
-}
+   transform: translateY(200%);
 
+   transition: transform 250ms var(--timing-function);
+}
 
 .projects-list__description {
    padding: 20px 24px 20px 24px;
@@ -807,8 +878,6 @@ body {
    margin-top: 0;
    margin-bottom: 0;
    margin-left: 0;
-   /* padding-left: 24px;
-   padding-bottom: 20px; */
 
    font-size: 16px;
    line-height: 1.88;
