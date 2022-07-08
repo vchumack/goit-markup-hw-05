@@ -228,7 +228,7 @@ body {
    background-image: linear-gradient(to right,
          rgba(47, 48, 58, 0.4),
          rgba(47, 48, 58, 0.4)),
-      url(../images/bgimg.jpg);
+      url('../images/bgimg.jpg');
    background-repeat: no-repeat;
    background-position: center;
    background-size: cover;
@@ -283,7 +283,12 @@ body {
 
    background-color: var(--overlay-color);
 
-   transition: opacity 250ms var(--timing-function);
+   transform: scale(1.15);
+
+   transition: opacity 250ms var(--timing-function),
+      visibility 250ms var(--timing-function),
+      transform 250ms var(--timing-function);
+
 
 }
 
@@ -662,8 +667,6 @@ body {
    margin-top: 0;
    margin-bottom: 20px;
 
-
-
    font-size: 14px;
    line-height: 1;
    text-transform: uppercase;
@@ -804,6 +807,7 @@ body {
    display: inline-block;
    text-decoration: none;
 
+   transition: box-shadow 250ms var(--timing-function);
 }
 
 .projects-list__link:hover,
